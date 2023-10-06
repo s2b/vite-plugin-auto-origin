@@ -1,0 +1,31 @@
+{
+  "name": "vite-plugin-auto-origin",
+  "version": "1.0.0",
+  "description": "Sets vite dev server origin to dev server url",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:types && npm run build:cjs && npm run build:esm",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outfile dist/index.d.ts src/index.ts",
+    "build:cjs": "esbuild src/index.ts --platform=node --format=cjs --outfile=dist/index.cjs",
+    "build:esm": "esbuild src/index.ts --platform=node --format=esm --outfile=dist/index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Praetorius",
+  "license": "MIT",
+  "keywords": [
+    "vite-plugin"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "esbuild": "^0.19.4",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
+  }
+}
