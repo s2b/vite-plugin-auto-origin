@@ -11,8 +11,11 @@ indent_style = space
 trim_trailing_whitespace = false
 
 
-[*.yaml]
+[*.{yml,yaml}]
 indent_size = 2
 
 [package.json]
+indent_size = 2
+
+[package-lock.json]
 indent_size = 2
