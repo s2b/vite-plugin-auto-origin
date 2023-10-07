@@ -15,7 +15,8 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --outfile dist/index.d.ts src/index.ts",
     "build:cjs": "esbuild src/index.ts --platform=node --format=cjs --outfile=dist/index.cjs",
     "build:esm": "esbuild src/index.ts --platform=node --format=esm --outfile=dist/index.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
   },
   "author": "Simon Praetorius",
   "license": "MIT",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^20.8.2",
     "esbuild": "^0.19.4",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2",
     "vite": "^4.4.11"
   }

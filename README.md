@@ -10,10 +10,10 @@ dev server automatically based on previous requests from the vite client.
 vite.config.js:
 
 ```js
-import autoOrigin from 'vite-plugin-auto-origin';
+import autoOrigin from "vite-plugin-auto-origin";
 
 export default defineConfig({
-  plugins: [autoOrigin()],
-  // ...
-})
+    plugins: [autoOrigin()],
+    // ...
+});
 ```
