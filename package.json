@@ -1,7 +1,13 @@
 {
   "name": "vite-plugin-auto-origin",
-  "version": "1.0.0",
-  "description": "Sets vite dev server origin to dev server url",
+  "version": "1-dev",
+  "description": "Vite plugin that configures origin url for dev server automatically",
+  "author": "Simon Praetorius",
+  "license": "MIT",
+  "keywords": [
+    "vite-plugin"
+  ],
+  "homepage": "https://github.com/s2b/vite-plugin-auto-origin",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
@@ -10,19 +16,19 @@
       "require": "./dist/index.cjs"
     }
   },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "build": "npm run build:types && npm run build:cjs && npm run build:esm",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && npm run build:types && npm run build:cjs && npm run build:esm",
     "build:types": "tsc --declaration --emitDeclarationOnly --outfile dist/index.d.ts src/index.ts",
     "build:cjs": "esbuild src/index.ts --platform=node --format=cjs --outfile=dist/index.cjs",
     "build:esm": "esbuild src/index.ts --platform=node --format=esm --outfile=dist/index.mjs",
+    "prepack": "npm run build",
     "lint": "prettier --check .",
     "format": "prettier --write ."
   },
-  "author": "Simon Praetorius",
-  "license": "MIT",
-  "keywords": [
-    "vite-plugin"
-  ],
   "devDependencies": {
     "@types/node": "^20.8.2",
     "esbuild": "^0.19.4",
