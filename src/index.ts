@@ -1,4 +1,4 @@
-import type { ViteDevServer } from "vite";
+import type { PluginOption, ViteDevServer } from "vite";
 import type { IncomingMessage } from "node:http";
 
 const originPlaceholder = "__VITE_AUTO_ORIGIN__";
@@ -46,7 +46,7 @@ function transform(code: string): string {
     return replaceAll(originPlaceholder, requestOrigin, code);
 }
 
-export default function autoOrigin() {
+export default function autoOrigin(): PluginOption {
     return {
         name: "vite-plugin-auto-origin",
         apply: "serve",

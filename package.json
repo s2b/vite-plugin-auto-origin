@@ -8,6 +8,7 @@
     "vite-plugin"
   ],
   "homepage": "https://github.com/s2b/vite-plugin-auto-origin",
+  "type": "module",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.cts",
   "exports": {
@@ -28,7 +29,7 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:types && npm run build:cjs && npm run build:esm",
-    "build:types": "tsc --declaration --emitDeclarationOnly --outfile dist/index.d.ts src/index.ts && mv dist/index.d.ts dist/index.d.mts && cp dist/index.d.mts dist/index.d.cts",
+    "build:types": "tsc --emitDeclarationOnly && mv dist/index.d.ts dist/index.d.mts && cp dist/index.d.mts dist/index.d.cts",
     "build:cjs": "esbuild src/index.ts --platform=node --format=cjs --outfile=dist/index.cjs",
     "build:esm": "esbuild src/index.ts --platform=node --format=esm --outfile=dist/index.mjs",
     "prepack": "npm run build",
