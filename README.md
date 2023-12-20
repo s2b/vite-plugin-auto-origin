@@ -1,17 +1,25 @@
 # Vite Auto Origin
 
-This plugin for [vite](https://vitejs.dev/) aims to set the
+This plugin for [Vite](https://vitejs.dev/) aims to set the
 [server.origin](https://vitejs.dev/config/server-options.html#server-origin)
 configuration option automatically to the external URL of the vite dev server.
-This leads to the vite dev server serving additional assets (e. g. referenced
-images or font files) during development instead of the main application server.
 
-This is useful in situations where the url structure of the application server
-differs from the original directory structure or if certain files aren't
-publicly accessible.
+The server.origin option is required to be set to the Vite dev server url in
+[backend integration](https://vitejs.dev/guide/backend-integration.html#backend-integration) scenarios,
+so that assets (e. g. referenced images or font files) are not tried to be loaded from the backend URL,
+but from the dev server url.
 
-In thise case, you would need to specify `server.origin` manually in your
-`vite.config.js`, which this plugin does automatically.
+When your CSS references a font file, and CSS is loaded via dev server and HMR,
+by default vite uses the path to the font file on the vite dev server without scheme or protocol
+(e.g. `/url/to/dev/font.woff`). This isn't an issue, when using Vite as backend for your JS app,
+but will not work, when accessing your project with the backend url and only adding the dev server JS and CSS,
+as your browser would try to load `https:/backend.tld/url/to/dev/font.woff` instead of `http://127.0.0.1:8080/url/to/dev/font.woff`.
+
+This is exactly what `server.origin` is for and you could set it manually in your
+`vite.config.js`.
+
+With this plugin enabled however, this option is set automatically, even in more complex scenarios, where your Vite dev server
+is reached by the browser through a proxy.
 
 ## Installation
 
