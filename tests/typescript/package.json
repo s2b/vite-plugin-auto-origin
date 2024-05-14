@@ -1,5 +1,5 @@
 {
-  "name": "auto-origin-javascript-esm-test",
+  "name": "auto-origin-typescript-test",
   "type": "module",
   "devDependencies": {
     "@types/rollup": "^0.54.0",
