@@ -1,4 +1,4 @@
-import type { PluginOption, ViteDevServer } from "vite";
+import { createLogger, type PluginOption, type ViteDevServer } from "vite";
 import type { IncomingMessage } from "node:http";
 
 const originPlaceholder = "__VITE_AUTO_ORIGIN__";
@@ -27,13 +27,15 @@ function replaceAll(find: string, replace: string, subject: string): string {
 }
 
 function configureServer(server: ViteDevServer): void {
+    const logger = createLogger("info", { prefix: "[plugin-auto-origin]" });
+
     server.middlewares.use((req, _res, next) => {
         const prevRequestOrigin = requestOrigin;
         requestOrigin = detectProtocol(req, server) + "://" + detectHost(req);
 
         if (prevRequestOrigin !== requestOrigin) {
-            server.config.logger.info(
-                `Origin auto-detected by vite-plugin-auto-origin: ${requestOrigin}`,
+            logger.info(
+                `Origin auto-detected: ${requestOrigin}`,
                 { timestamp: true },
             );
         }
