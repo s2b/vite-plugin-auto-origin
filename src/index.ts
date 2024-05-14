@@ -34,10 +34,9 @@ function configureServer(server: ViteDevServer): void {
         requestOrigin = detectProtocol(req, server) + "://" + detectHost(req);
 
         if (prevRequestOrigin !== requestOrigin) {
-            logger.info(
-                `Origin auto-detected: ${requestOrigin}`,
-                { timestamp: true },
-            );
+            logger.info(`Origin auto-detected: ${requestOrigin}`, {
+                timestamp: true,
+            });
         }
 
         next();
