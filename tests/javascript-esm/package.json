@@ -1,0 +1,11 @@
+{
+  "name": "auto-origin-javascript-esm-test",
+  "type": "module",
+  "devDependencies": {
+    "vite": "^5.2.11",
+    "vite-plugin-auto-origin": "file:../../"
+  },
+  "scripts": {
+    "build": "vite build"
+  }
+}

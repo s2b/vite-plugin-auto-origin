@@ -28,10 +28,14 @@
   ],
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+    "build": "npm run clean && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
     "prepack": "npm run build",
     "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:distribution": "npm run test:distribution:cjs && npm run test:distribution:esm && npm run test:distribution:ts",
+    "test:distribution:cjs": "cd tests/javascript-cjs/ && npm install && npm run build",
+    "test:distribution:esm": "cd tests/javascript-esm/ && npm install && npm run build",
+    "test:distribution:ts": "cd tests/typescript/ && npm install && npm run build && npm run typecheck"
   },
   "peerDependencies": {
     "vite": "^5.0.0"
