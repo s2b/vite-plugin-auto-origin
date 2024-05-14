@@ -33,9 +33,9 @@
     "lint": "prettier --check .",
     "format": "prettier --write .",
     "test:distribution": "npm run test:distribution:cjs && npm run test:distribution:esm && npm run test:distribution:ts",
-    "test:distribution:cjs": "cd tests/javascript-cjs/ && npm install && npm run build",
-    "test:distribution:esm": "cd tests/javascript-esm/ && npm install && npm run build",
-    "test:distribution:ts": "cd tests/typescript/ && npm install && npm run build && npm run typecheck"
+    "test:distribution:cjs": "cd tests/distribution/javascript-cjs/ && npm install && npm run build",
+    "test:distribution:esm": "cd tests/distribution/javascript-esm/ && npm install && npm run build",
+    "test:distribution:ts": "cd tests/distribution/typescript/ && npm install && npm run build && npm run typecheck"
   },
   "peerDependencies": {
     "vite": "^5.0.0"
