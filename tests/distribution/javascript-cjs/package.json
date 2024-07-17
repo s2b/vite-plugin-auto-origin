@@ -2,7 +2,7 @@
   "name": "auto-origin-javascript-cjs-test",
   "devDependencies": {
     "vite": "^5.2.11",
-    "vite-plugin-auto-origin": "file:../../../"
+    "vite-plugin-auto-origin": "file:../package/"
   },
   "scripts": {
     "build": "vite build"

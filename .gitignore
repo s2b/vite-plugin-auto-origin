@@ -1,3 +1,5 @@
 node_modules
 dist
 tests/**/package-lock.json
+/tests/distribution/package
+/tests/distribution/vite-plugin-auto-origin*.tgz
