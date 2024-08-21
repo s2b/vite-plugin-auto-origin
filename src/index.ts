@@ -6,7 +6,13 @@ let requestOrigin = "";
 
 function detectProtocol(req: IncomingMessage, server: ViteDevServer): string {
     if (req.headers["x-forwarded-proto"]) {
-        return <string>req.headers["x-forwarded-proto"];
+        const proto =
+            typeof req.headers["x-forwarded-proto"] === "string"
+                ? req.headers["x-forwarded-proto"]
+                      .split(",")
+                      .map((item) => item.trim())
+                : req.headers["x-forwarded-proto"];
+        return proto[0] ?? "";
     }
     if (req.headers["x-forwarded-ssl"]) {
         return req.headers["x-forwarded-ssl"] === "on" ? "https" : "http";
@@ -15,11 +21,16 @@ function detectProtocol(req: IncomingMessage, server: ViteDevServer): string {
 }
 
 function detectHost(req: IncomingMessage): string {
-    return (
-        <string>req.headers["x-forwarded-host"] ||
-        req.headers.host ||
-        "localhost"
-    );
+    if (req.headers["x-forwarded-host"]) {
+        const host =
+            typeof req.headers["x-forwarded-host"] === "string"
+                ? req.headers["x-forwarded-host"]
+                      .split(",")
+                      .map((item) => item.trim())
+                : req.headers["x-forwarded-host"];
+        return host[0] ?? "";
+    }
+    return req.headers.host || "localhost";
 }
 
 function replaceAll(find: string, replace: string, subject: string): string {
