@@ -2,8 +2,8 @@
   "name": "auto-origin-typescript-test",
   "type": "module",
   "devDependencies": {
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0",
     "vite-plugin-auto-origin": "file:../package/"
   },
   "scripts": {
